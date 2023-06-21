@@ -3,6 +3,8 @@
 A Django Rest Framework Project To Analyze Text Sentiment Using A Pre-trained Machine Learning Model.
 
 
+<br>
+
 # Setup
 
 To setup this project locally, follow the instructions below:
@@ -57,7 +59,6 @@ sentiment_analyzer/
     └── views.py
 ```
 
-<br>
 
 ---
 
@@ -76,8 +77,6 @@ Now, run the following commands and you are ready to go!
 ```bash
 (venv)$ python manage.py runserver
 ```
-<br>
-
 ---
 <br>
 
