@@ -1,7 +1,6 @@
 # SENTIMENT ANALYZER API   
 
-## A Django Rest Framework Project To Analyze Text Sentiment Using A Pre-trained Machine Learning Model.
-<br>
+A Django Rest Framework Project To Analyze Text Sentiment Using A Pre-trained Machine Learning Model.
 
 
 # Setup
@@ -10,20 +9,20 @@ To setup this project locally, follow the instructions below:
 
 1. Create a directory and change directory:
 ```bash
-    $ mkdir API_Project/
-    $ cd API_Project/
+$ mkdir API_Project/
+$ cd API_Project/
 ```
 2. Create a Python virtual environment:
 ```bash
-    $ python -m venv venv
+$ python -m venv venv
 ```
 3. Now activate the virtual environment:
 ```bash
-    $ source venv/bin/activate
+$ source venv/bin/activate
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For Windows machines
 ```posh
-    PS> .\venv\Scripts\activate
+PS> .\venv\Scripts\activate
 ```
 4. Clone the project from github:
 ```bash
