@@ -9,36 +9,34 @@ from .models import Sentiment
 def index(request):
     return render(request, 'index.html')
 
-#Error Handlers
-def invalid_request(request, exception):
-    return render(request, 'invalid_request.html', status=400)
-
-def page_not_found(request, exception):
-    return render(request, 'not_found.html', status=404)
-
-def server_error(request):
-    return render(request, 'server_error.html', status=500)
-
-
 #Analyzes the text using the pretrained model
 @api_view(['POST'])
 def analyze(request):
     
     text = request.data.get('text')
-    model = SetFitModel.from_pretrained("StatsGary/setfit-ft-sentinent-eval")
-    prediction = model([text])
-    sentiemnt_data = prediction.tolist().pop()
-    sentiment = ''
-    
-    if sentiemnt_data == 1:
-        sentiment = 'positive'
 
-    elif sentiemnt_data == 0:
-        sentiment = 'negative'
+    try:
+        existing_data = Sentiment.objects.get(text=text) # Checking if the text already exists in the database 
+        serializer = SentimentSerializer(existing_data)
+        return Response(serializer.data, status=200)
+
+    except Sentiment.DoesNotExist:
     
-    else:
-        sentiment = 'neutral'
-    
+        model = SetFitModel.from_pretrained("StatsGary/setfit-ft-sentinent-eval")
+        prediction = model([text])
+        sentiemnt_data = prediction.tolist()
+        sentiment = ''
+        
+        if sentiemnt_data[0] == 1:
+            sentiment = 'positive'
+
+        elif sentiemnt_data[0] == 0:
+            sentiment = 'negative'
+        
+        else:
+            sentiment = 'neutral'
+        
+    #Saving the data into the database
     data = {'text': text, 'sentiment' : sentiment}
     serializer = SentimentSerializer(data=data)
     if serializer.is_valid():
@@ -59,3 +57,12 @@ def all_analyzed(request):
     return Response(serializer.data, status=200)
 
 
+#Error Handlers
+def invalid_request(request, exception):
+    return render(request, 'invalid_request.html', status=400)
+
+def page_not_found(request, exception):
+    return render(request, 'not_found.html', status=404)
+
+def server_error(request):
+    return render(request, 'server_error.html', status=500)
