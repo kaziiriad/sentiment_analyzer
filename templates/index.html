@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>API Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .endpoint {
+            margin-bottom: 30px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+
+        .endpoint h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .endpoint p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .endpoint pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>API Overview</h1>
+
+    <div class="endpoint">
+        <h2>POST /api/analyze/</h2>
+        <p>Description: Analyze Text Sentiment Using a Pre-trained ML Model</p>
+        <p>Request Body:</p>
+        <pre>
+{
+    "text": "Text to be analyzed"
+}
+        </pre>
+        <p>Example response:</p>
+        <pre>
+{
+    "sentiment": "positive/negative/neutral"
+}
+        </pre>
+    </div>
+
+    <div class="endpoint">
+        <h2>GET /api/analyze/all/</h2>
+        <p>Description: Retrieve All The Analyzed Data From The Database.</p>
+        <p>Example response:</p>
+        <pre>
+{
+    "text1" : "positive"
+},
+{
+    "text2" : "positive"
+},
+{
+    "text3" : "negative"
+}
+        </pre>
+    </div>
+
+    <div class="endpoint">
+        <h2>GET /docs/</h2>
+        <p>Description: API Documentation - SwaggerUI.</p>
+        
+    </div>
+</body>
+
+</html>
