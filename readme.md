@@ -58,8 +58,6 @@ sentiment_analyzer/
     ├── urls.py
     └── views.py
 ```
-
-
 ---
 
 <br>
